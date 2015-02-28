@@ -22,6 +22,7 @@
 	<gap:plugin name="org.apache.cordova.media" />
 	
 	<gap:platform name="android" />	
+	<gap:platform name="ios" />
 	
 	<preference name="orientation" value="default" />
 	<preference name="fullscreen" value="true" />	
