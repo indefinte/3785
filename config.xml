@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.alu.3785"
+        versionCode = "1" 
+        version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>尚青雲端整合行銷</name>
+
+    <description>
+        尚青雲端整合行銷 為您達到最佳的行銷效果!
+    </description>
+
+    <author href="https://build.phonegap.com" email="shady.tw@gmail.com">
+        Tsai Toan-En
+    </author>
+	
+	<icon src="icon.png" />
+	
+	<gap:plugin name="org.apache.cordova.media" />
+	
+	<gap:platform name="android" />	
+	
+	<preference name="orientation" value="landscape" />
+	<preference name="fullscreen" value="true" />	
+	
+</widget>
