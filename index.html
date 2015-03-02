@@ -106,7 +106,7 @@ $(document).ready(function() {
 	});
 	$('body').on('click','.btn2',function(){
 		try{			
-			var s= ''; $.each(window,function(k,v){ s+=k+'\n'; }); alert(s);
+			//var s= ''; $.each(window,function(k,v){ s+=k+'\n'; }); alert(s);
 			cordova.plugins.barcodeScanner.scan(function (result) {
 				  alert('Got a barcode\n' +
 						'Result: ' + result.text + '\n' +
@@ -121,7 +121,7 @@ $(document).ready(function() {
 	});
 	$('body').on('click','.btn3',function(){
 		try{
-			cordova.plugins.barcodeScanner.encode(barcodescanner.Encode.TEXT_TYPE, "http://www.shangching.com",function(success)  {
+			cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, "http://www.shangching.com",function(success)  {
 					alert("encode success: " + success);
 				}, function(fail) {
 					alert("encoding failed: " + fail);
