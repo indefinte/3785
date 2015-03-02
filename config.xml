@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.alu.3785"
+        id          = "com.alu.shangching"
         versionCode = "1" 
         version     = "1.0.0" >
 
@@ -24,7 +24,10 @@
 	<gap:platform name="android" />	
 	<gap:platform name="ios" />
 	
+	<gap:plugin name="com.phonegap.plugins.barcodescanner" version="2.0.0" />
+	<gap:plugin name="fi.avaus.cordova.geolocation" version="0.3.11" />
+	
 	<preference name="orientation" value="default" />
 	<preference name="fullscreen" value="true" />	
-	
+		
 </widget>
