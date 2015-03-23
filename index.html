@@ -25,7 +25,8 @@ h2 { position: absolute; right: 20px; bottom: 0px; color: #333; font-size: 20px;
 h3.tms { position: absolute; right: 10px; top: 0px; color: rgb(29, 102, 102); font-size: 8px; text-shadow:2px 2px 2px #999999; margin: 5px 10px 0 0; }
 .profile { position: absolute; left: 10px; }
 .ht { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100px; background-color: rgb(255,251,138); -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); }
-.bd { border-right: 1px solid #ddd; }
+.tp { position: fixed; left: 0; top: 0; right: 0; bottom: 50px; }
+.bd { position: fixed; left: 0; right: 0; bottom: 0; height: 50px; background-color: #000; }
 .clb { clear: both; }
 .jfc { background-color: #660000; color: #fff; margin: 0 10px 20px 10px; padding: 10px; }
 .rad { -webkit-border-radius: 15px; -webkit-border-top-right-radius: 0; -moz-border-radius: 15px; -moz-border-radius-topright: 0; border-radius: 15px; border-top-right-radius: 0; -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); }
@@ -55,16 +56,17 @@ h3.tms { position: absolute; right: 10px; top: 0px; color: rgb(29, 102, 102); fo
 	display:inline-block;
 	color:#c92200;
 	font-family:Arial;
-	font-size:15px;
+	font-size:12px;
 	font-weight:bold;
 	font-style:normal;
-	height:65px;
-	line-height:65px;
+	height:45px;
+	line-height:45px;
 	width:180px;
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #ded17c;
-	margin: 10px;
+	margin: 2px 5px;
+	float: left;
 }
 .btn:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f2ab1e), color-stop(1, #f0c911) );
@@ -99,7 +101,7 @@ $(document).ready(function() {
 				  'Heading: '           + position.coords.heading           + '\n' +
 				  'Speed: '             + position.coords.speed             + '\n' +
 				  'Timestamp: '         + position.timestamp                + '\n');
-		}, function(error) {
+		},function(error){
 			alert('code: '    + error.code    + '\n' +
 				  'message: ' + error.message + '\n');
 		});	  	  
@@ -107,7 +109,7 @@ $(document).ready(function() {
 	$('body').on('click','.btn2',function(){
 		try{			
 			//var s= ''; $.each(window,function(k,v){ s+=k+'\n'; }); alert(s);
-			cordova.plugins.barcodeScanner.scan(function (result) {
+			cordova.plugins.barcodeScanner.scan(function(result){
 				  alert('Got a barcode\n' +
 						'Result: ' + result.text + '\n' +
 						'Format: ' + result.format + '\n' +
@@ -121,10 +123,10 @@ $(document).ready(function() {
 	});
 	$('body').on('click','.btn3',function(){
 		try{
-			cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, "http://www.shangching.com",function(success)  {
-					alert("encode success: " + success);
+			cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, 'http://www.shangching.com',function(success)  {
+					alert('encode success: ' + success);
 				}, function(fail) {
-					alert("encoding failed: " + fail);
+					alert('encoding failed: ' + fail);
 			});
 		}catch(e){
 			alert(e);
@@ -136,73 +138,14 @@ $(document).ready(function() {
 </head>
 <body>
 
-<div class="ht">
-	<img class="profile" src="https://yt3.ggpht.com/-egIF5-DC6m4/AAAAAAAAAAI/AAAAAAAAAAA/khWr-frkrlA/s100-c-k-no/photo.jpg" title="揪夥要知道" alt="揪夥要知道">
-	<h3 class="tms">Joyful 揪夥！ CLOUD LIFE<h3>
-	<h2>揪夥要知道</h2>	
+<div class="tp">
+	<iframe src="http://wp.3785tv.com" marginheight="0" marginwidth="0" frameborder="0" scrolling="yes" style="display: block; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
-<div style="width: 100%; height: 120px;"></div>
-<table class="table table-striped">
-  <tr>
-    <th class="bd">
-		<iframe width="95%" height="315" src="https://www.youtube.com/embed/--1ByPtOTwc" frameborder="0" allowfullscreen></iframe>
-	</th>
-  </tr>
-  <tr>
-    <td>		
-		<div class="jfc rad">
-			<div class="yt-lockup-description yt-ui-ellipsis yt-ui-ellipsis-2" dir="ltr">
-			FB粉絲團「揪夥享樂誌」：<br><a href="https://www.facebook.com/joyful.fans" target="_blank" title="https://www.facebook.com/joyful.fans" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">https://www.facebook.com/joyful.fans</a><br><br>
-			揪夥APP Android下載網址：<br><a href="https://play.google.com/store/apps/details?id=com.goyummy.customer.prod" target="_blank" title="https://play.google.com/store/apps/details?id=com.goyummy.customer.prod" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">https://play.google.com/store/apps/details?id=com.goyummy...</a><br><br>
-			揪夥APP iOS下載網址：<br><a href="https://itunes.apple.com/us/app/jiu-hu" target="_blank" title="https://itunes.apple.com/us/app/jiu-hu" rel="nofollow" dir="ltr" class="yt-uix-redirect-link">https://itunes.apple.com/us/app/jiu-hu</a>...<br><br>
-			</div>
-		</div>
-	</td>
-  </tr>
-  <tr>
-    <th class="bd">
-		<iframe width="95%" height="315" src="https://www.youtube.com/embed/tkRoNnP7S34" frameborder="0" allowfullscreen></iframe>
-	</th>
-  </tr>
-  <tr>
-    <td>
-		<div class="jfc rad">			
-			<div class="yt-lockup-description yt-ui-ellipsis yt-ui-ellipsis-2" dir="ltr">
-			築之園日式涮涮鍋的老闆幫我們補抽"活動一的紅包"哦!!!有沒有你呢???<br><br>
-			如果有,, 快快和我們連絡吧 ^_^<br><br>
-			</div>
-		</div>
-	</td>
-  </tr> 
-  <tr>
-    <th class="bd">
-		<iframe width="95%" height="315" src="https://www.youtube.com/embed/_1k4UqhXYjw" frameborder="0" allowfullscreen></iframe>
-	</th>
-  </tr>
-  <tr>	
-    <td>
-		<div class="jfc rad">
-			<div class="yt-lockup-description yt-ui-ellipsis yt-ui-ellipsis-2" dir="ltr">
-			今天在築之園日式涮涮鍋來做抽獎和採訪~<br><br>
-			剛好採訪到一桌吉娃娃主人，超級卡娃伊的啦～<br><br>
-			尚青85美食節的會員記得要更新哦!<br><br>	
-
-			<a href="http://3785vr720.com/" target="_blank">720環景 [新開視窗]</a><br><br>			
-			
-			</div>
-		</div>
-	</td>
-  </tr> 
-  <tr>
-    <th class="bd">
-		
-		<a href="#" class="btn btn1">座標測試</a><br>
-		<a href="#" class="btn btn2">QR Code 掃描測試</a><br>
-		<a href="#" class="btn btn3">QR Code 生成測試</a><br>		
-		
-	</th>
-  </tr> 
-</table>
+<div class="bd">		
+	<a href="#" class="btn btn1">座標測試</a>
+	<a href="#" class="btn btn2">QR Code 掃描測試</a>
+	<a href="#" class="btn btn3">QR Code 生成測試</a>			
+</div>
 
 </body>
 </html>
