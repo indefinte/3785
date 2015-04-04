@@ -26,10 +26,11 @@ h3.tms { position: absolute; right: 10px; top: 0px; color: rgb(29, 102, 102); fo
 .profile { position: absolute; left: 10px; }
 .ht { display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100px; background-color: rgb(255,251,138); -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.2); }
 .tp { position: fixed; left: 0; top: 0; right: 0; bottom: 0; }
-.bd { display: none; position: fixed; left: 0; right: 0; bottom: 0; height: 50px; background-color: #000; }
+.bd { display: block; position: fixed; left: 0; right: 0; bottom: 0; height: 71px; background-color: rgb(24,88,160); z-index: 999; text-align: center; }
 .clb { clear: both; }
 .jfc { background-color: #660000; color: #fff; margin: 0 10px 20px 10px; padding: 10px; }
 .rad { -webkit-border-radius: 15px; -webkit-border-top-right-radius: 0; -moz-border-radius: 15px; -moz-border-radius-topright: 0; border-radius: 15px; border-top-right-radius: 0; -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2); }
+.btnqci { width: 87px; height: 98px; margin: -27px auto 0 auto; }
 
 .btn {
 	-moz-box-shadow:inset 0px 1px 0px 0px #f9eca0;
@@ -81,18 +82,45 @@ h3.tms { position: absolute; right: 10px; top: 0px; color: rgb(29, 102, 102); fo
 
 </style>
 <script>
-
-window.location = 'http://wp.3785tv.com';
-/*
+//window.location = 'http://wp.3785tv.com';
 document.addEventListener('deviceready', function(){
 	//alert('navigator.geolocation works well');	
 	
 	document.addEventListener('menubutton', function(){
-		alert('Menu button pressed.');    
+		alert('Menu button pressed.');
+		try{
+			cordova.plugins.barcodeScanner.scan(
+				function (result) {
+				  alert("We got a barcode\n" +
+						"Result: " + result.text + "\n" +
+						"Format: " + result.format + "\n" +
+						"Cancelled: " + result.cancelled);
+				}, 
+				function (error) {
+				  alert("Scanning failed: " + error);
+				}
+			);
+		}catch(e){
+			alert(e);
+		}
+		alert('Menu button pressed.');
 	}, true);
 }, false);
 
 $(document).ready(function() {
+	$('body').on('click','.btnqci',function(){
+		try{
+			cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, 'http://wp.3785tv.com', function(success) {
+					alert("encode success: " + success);
+				}, function(fail) {
+					alert("encoding failed: " + fail);
+				}
+			);
+		}catch(e){
+			alert(e);
+		}	
+	});
+	/*
 	$('body').on('click','.btn1',function(){
 		navigator.geolocation.getCurrentPosition(function(position) {
 			alert('Latitude: '          + position.coords.latitude          + '\n' +
@@ -123,33 +151,24 @@ $(document).ready(function() {
 			alert(e);
 		}		
 	});
-	$('body').on('click','.btn3',function(){
-		try{
-			cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, 'http://www.shangching.com',function(success)  {
-					alert('encode success: ' + success);
-				}, function(fail) {
-					alert('encoding failed: ' + fail);
-			});
-		}catch(e){
-			alert(e);
-		}	
-	});
+	*/
 	
 });	
-*/
+
 </script>
 </head>
 <body>
 
 <div class="tp">
-	<!-- <iframe src="http://wp.3785tv.com" marginheight="0" marginwidth="0" frameborder="0" scrolling="yes" style="display: block; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
-	<!-- <iframe src="http://site183224-8838-221.strikingly.com/" marginheight="0" marginwidth="0" frameborder="0" scrolling="yes" style="display: block; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
-	<!-- <iframe src="http://wp.3785tv.com/" marginheight="0" marginwidth="0" frameborder="0" scrolling="yes" style="display: block; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+	<iframe src="http://wp.3785tv.com" marginheight="0" marginwidth="0" frameborder="0" scrolling="yes" style="display: block; width: 100%; height: 100%;" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
 <div class="bd">		
+	<!-- 
 	<a href="#" class="btn btn1">座標測試</a>
 	<a href="#" class="btn btn2">QR Code 掃描測試</a>
 	<a href="#" class="btn btn3">QR Code 生成測試</a>			
+	-->
+	<a href="#"><img src="images/barcode.png" class="btnqci"></a>
 </div>
 
 </body>
