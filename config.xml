@@ -38,5 +38,7 @@
     <preference name="target-device" value="universal" />
 	<preference name="orientation" value="default" />
 	<preference name="fullscreen" value="true" />	
-		
+	<preference name="webviewbounce" value="true" />
+	<preference name="DisallowOverscroll" value="true" />
+	<access origin="*" />
 </widget>
