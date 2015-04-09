@@ -118,7 +118,7 @@ $(document).ready(function() {
 			var udata = '尚青雲端整合行銷';
 			window.CONN.run({
 				query: 'INSERT INTO img (uid, uname, udata) VALUES ( ?, ?, ?)',
-				values: [u, d],
+				values: [uid, uname, udata],
 				onSuccess:function(tx, r) {
 					console.log('setWebSql Success');
 				},
